@@ -1,4 +1,4 @@
-export let tours = [
+export let tours_ = [
   {
     id: 1,
     imageSrc: './images/bujumbura.jpg',

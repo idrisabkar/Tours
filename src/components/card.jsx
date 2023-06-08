@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export function Card(props) {
-  const { imageSrc, title, content, price } = props
+  const { imageSrc, title, content, price, notInterested } = props
   console.log(imageSrc)
   const [words, setWord] = useState(content.substring(0, 300))
   const [less, setLess] = useState(true)
@@ -37,7 +37,9 @@ export function Card(props) {
         )}
       </p>
 
-      <button className="btn">Not Enterested</button>
+      <button className="btn" onClick={notInterested}>
+        Not Enterested
+      </button>
     </div>
   )
 }

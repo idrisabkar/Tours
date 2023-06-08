@@ -1,5 +1,6 @@
 import '../App.css'
 import { Card } from './card'
+import { tours } from '../tours'
 
 function App() {
   return (
@@ -7,9 +8,18 @@ function App() {
       <h1>Our Tours</h1>
       <hr />
       <div className="tours">
-        <Card />
-        <Card />
-        <Card />
+        {tours.map((tour) => {
+          const { id, imageSrc, title, content, price } = tour
+          return (
+            <Card
+              key={id}
+              imageSrc={imageSrc}
+              title={title}
+              content={content}
+              price={price}
+            />
+          )
+        })}
       </div>
     </main>
   )

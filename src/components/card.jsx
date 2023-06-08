@@ -1,23 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export function Card(props) {
-  const { imgScr, title, content } = props
+  const { imageSrc, title, content, price } = props
+  console.log(imageSrc)
+  const [words, setWord] = useState(content.substring(0, 300))
+  const [less, setLess] = useState(true)
+  function showMore() {
+    setLess(false)
+    setWord(content)
+  }
+
+  function showLess() {
+    setLess(true)
+    setWord(content.substring(0, 300))
+  }
   return (
     <div className="container">
       <div className="image">
-        <img src="./images/bujumbura.jpg" alt="" />
+        <div className="price">
+          <span>{price}</span>
+        </div>
+        <img src={imageSrc} alt={title} />
       </div>
-      <h1 className="title">Best Of Ireland In 14 Days Tour</h1>
+      <h1 className="title">{title}</h1>
       <p className="content">
-        Rick Steves' Best of Ireland tour kicks off with the best of Dublin,
-        followed by Ireland's must-see historical sites, charming towns,
-        music-filled pubs, and seaside getaways — including Kinsale, the Dingle
-        Peninsula, the Cliffs of Moher, the Aran Islands, Galway, Connemara,
-        Giant's Causeway, and the compelling city of Belfast. All along the way,
-        Rick's guides will share their stories to draw you in to the Emerald
-        Isle, and the friendliness of the people will surely steal your heart.
-        Join us for the Best of Ireland in 14 Days!
+        {words}
+        {less ? (
+          <button className="textConroler" onClick={showMore}>
+            {' '}
+            ...show more
+          </button>
+        ) : (
+          <button className="textConroler" onClick={showLess}>
+            show less
+          </button>
+        )}
       </p>
+
       <button className="btn">Not Enterested</button>
     </div>
   )
